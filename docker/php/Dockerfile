@@ -17,8 +17,4 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini
 
-#RUN docker-php-ext-install mysqli pdo pdo_mysql
-
-#RUN pear install pear/PHP_CodeSniffer
-
 RUN usermod -u 1000 www-data

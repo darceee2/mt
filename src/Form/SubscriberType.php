@@ -76,7 +76,7 @@ class SubscriberType extends AbstractType
      *
      * @throws \Exception
      */
-    protected function getCategoriesChoices()
+    protected function getCategoriesChoices(): array
     {
         $choices = [];
         /** @var Category[] $categories */
