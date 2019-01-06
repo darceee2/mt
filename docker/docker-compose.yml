@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+    mt_nginx:
+        container_name: mt_nginx
+        build: ./nginx
+        ports:
+            - "8000:80"
+        links:
+            - mt_php
+        volumes:
+            - ../:/var/www/mt
+            - ./nginx/site.conf:/etc/nginx/conf.d/default.conf
+    mt_php:
+        container_name: mt_php
+        build: ./php
+        expose:
+            - "9000"
+        working_dir: /var/www/mt
+        volumes:
+            - ../:/var/www/mt
+        environment:
+            XDEBUG_CONFIG: remote_host=172.17.0.1
+            PHP_IDE_CONFIG: "serverName=my.local"

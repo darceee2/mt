@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(sortForm) }}
+    {{ form_row(sortForm.sort, {'attr': {'onchange': 'this.form.submit()'}}) }}
+    {{ form_end(sortForm) }}
+    <table cellpadding="3" border="1px" >
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Categories</td>
+            <td></td>
+        </tr>
+        {% for subscriber in subscribers %}
+            <tr>
+                <td>{{ subscriber.name }}</td>
+                <td>{{ subscriber.email }}</td>
+                <td>
+                    {% for category in subscriber.categories %}
+                        {{ categories[category].name|default }}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('app_admin_editsubscriber', {'id': subscriber.id}) }}">edit</a>
+                    <a href="{{ path('app_admin_removesubscriber', {'id': subscriber.id}) }}">remove</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br/>
+    <a href="{{ path('app_admin_createcategory') }}">create category</a>
+{% endblock %}

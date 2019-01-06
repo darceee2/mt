@@ -1,0 +1,11 @@
+.idea
+/.env.*
+database
+vendor
+var/cache
+var/log
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###
